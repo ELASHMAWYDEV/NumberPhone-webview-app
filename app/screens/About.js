@@ -1,11 +1,94 @@
 import React from "react";
-import { View, Text } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  Image,
+  TouchableNativeFeedback,
+} from "react-native";
+
+//Components
+import PageHeader from "../Components/PageHeader";
+
+//Assets
+import Colors from "../assets/Colors";
+
+//Utility
+import * as pkg from "../../app.json";
 
 export default About = (props) => {
   return (
-    <View>
-      <Text>About</Text>
+    <View style={styles.container}>
+      <PageHeader {...props} title="عن التطبيق" />
+      <View style={styles.logoContainer}>
+        <Image source={require("../assets/img/logo.png")} style={styles.logo} />
+      </View>
+      <Text style={styles.versionText}>إصدار {pkg.expo.version}</Text>
+      <Text style={styles.appNameText}>نمبر فون</Text>
+      <Text style={styles.infoText}>
+        أكبر دليل للبحث عن الأرقام وإظهار النتائج بكل دقة
+      </Text>
+      <TouchableNativeFeedback onPress={() => null} background={TouchableNativeFeedback.Ripple(Colors.primary, false)}>
+        <View style={styles.sendMailBtn}>
+          <Text style={styles.btnText}>تواصل معنا عبر البريد</Text>
+        </View>
+      </TouchableNativeFeedback>
     </View>
   );
-}
+};
 
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#fff",
+  },
+  logoContainer: {
+    marginTop: 40,
+    marginBottom: 20,
+    width: "100%",
+    height: 200,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  logo: {
+    resizeMode: "contain",
+    width: "60%",
+    height: "100%",
+  },
+  versionText: {
+    fontFamily: "mix-arab-regular",
+    fontSize: 28,
+    textAlign: "center",
+    borderBottomColor: "#ddd",
+    borderBottomWidth: 1,
+    paddingBottom: 8,
+    marginHorizontal: 20,
+  },
+  appNameText: {
+    fontFamily: "mix-arab-regular",
+    fontSize: 40,
+    textAlign: "center",
+    marginVertical: 40,
+  },
+  infoText: {
+    fontFamily: "mix-arab-regular",
+    fontSize: 16,
+    textAlign: "center",
+  },
+  sendMailBtn: {
+    borderWidth: 2,
+    borderRadius: 8,
+    padding: 10,
+    justifyContent: "center",
+    borderColor: Colors.primary,
+    alignItems: "center",
+    width: 330,
+    marginVertical: 30,
+    alignSelf: 'center',
+  },
+  btnText: {
+    fontFamily: "mix-arab-regular",
+    fontSize: 28,
+    color: Colors.primary,
+  },
+});

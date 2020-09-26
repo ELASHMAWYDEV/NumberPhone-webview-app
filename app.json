@@ -2,7 +2,7 @@
   "expo": {
     "name": "نمبر فون",
     "slug": "number-phone",
-    "version": "1.0.0",
+    "version": "1.0",
     "orientation": "portrait",
     "icon": "./app/assets/img/icon.png",
     "splash": {
