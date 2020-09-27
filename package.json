@@ -9,6 +9,8 @@
   },
   "dependencies": {
     "@expo-google-fonts/inter": "^0.1.0",
+    "@react-native-firebase/admob": "^7.6.5",
+    "@react-native-firebase/app": "^8.4.3",
     "@react-navigation/drawer": "^5.9.1",
     "@react-navigation/native": "^5.7.4",
     "expo": "~39.0.2",

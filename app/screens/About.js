@@ -5,7 +5,11 @@ import {
   StyleSheet,
   Image,
   TouchableNativeFeedback,
+  Linking
 } from "react-native";
+
+//Config
+import { EMAIL } from "../../config";
 
 //Components
 import PageHeader from "../Components/PageHeader";
@@ -28,7 +32,7 @@ export default About = (props) => {
       <Text style={styles.infoText}>
         أكبر دليل للبحث عن الأرقام وإظهار النتائج بكل دقة
       </Text>
-      <TouchableNativeFeedback onPress={() => null} background={TouchableNativeFeedback.Ripple(Colors.primary, false)}>
+      <TouchableNativeFeedback onPress={() => Linking.openURL(`mailto:${EMAIL}`)} background={TouchableNativeFeedback.Ripple(Colors.primary, false)}>
         <View style={styles.sendMailBtn}>
           <Text style={styles.btnText}>تواصل معنا عبر البريد</Text>
         </View>

@@ -15,7 +15,7 @@ import Colors from "../assets/Colors";
 export default Header = (props) => {
   return (
     <>
-    <View style={styles.container}>
+      <View style={styles.container}>
       <TouchableNativeFeedback
         useForeground
         onPress={() => props.navigation.openDrawer()}
@@ -57,6 +57,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     borderRadius: 40,
     overflow: "hidden",
+    alignSelf: "center"
   },
   logoContainer: {
     flex: 4,
@@ -73,15 +74,15 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.primary,
     justifyContent: 'center',
     alignItems: "center",
-    width: 80,
-    height: 80,
-    borderRadius: 80 / 2,
-    top: 5,
+    width: 105,
+    height: 105,
+    borderRadius: 105 / 2,
+    top: 15,
   },
   logo: {
     resizeMode: "contain",
-    width: 65,
-    height: 65,
+    width: 95,
+    height: 95,
   },
 
 });

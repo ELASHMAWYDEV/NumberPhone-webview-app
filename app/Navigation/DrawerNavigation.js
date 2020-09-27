@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import {
   StatusBar,
   View,
@@ -6,15 +6,19 @@ import {
   TouchableNativeFeedback,
   Image,
   StyleSheet,
+  Linking,
+  Share,
+  Platform,
 } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import {
   createDrawerNavigator,
   DrawerContentScrollView,
-  DrawerItemList,
-  DrawerItem,
 } from "@react-navigation/drawer";
 import Icon from "react-native-ionicons";
+
+//Config
+import { EMAIL, GOOGLE_PLAY_URL, APP_STORE_URL } from "../../config";
 
 //Screens
 import Home from "../screens/Home";
@@ -47,6 +51,28 @@ export default DrawerNavigation = () => {
 
 const CustomDrawer = (props) => {
 
+  //Share the app function
+  const shareApp = async () => {
+    try {
+      await Share.share({
+        message: `تعرف إنك ممكن تبحث عن أي رقم في العالم من خلال تطبيق نمبر فون !\nممكن تحمله من علي جوجل بلاي من هنا ${GOOGLE_PLAY_URL}\nأو من علي App Store من هنا ${APP_STORE_URL}`,
+      });
+    } catch (e) {
+      alert(e.message);
+    }
+  };
+
+
+  //Rate the app
+  const rateApp = () => {
+    const url = Platform.OS === "ios" ? APP_STORE_URL : GOOGLE_PLAY_URL;
+    if (url) {
+      
+      Linking.openURL(url);
+    } else {
+      return null;
+    }
+  }
 
   return (
     <DrawerContentScrollView style={styles.drawerContainer} {...props}>
@@ -54,46 +80,65 @@ const CustomDrawer = (props) => {
         <Image source={require("../assets/img/logo.png")} style={styles.logo} />
       </View>
       <Text style={styles.appName}>نمبر فون</Text>
-      <TouchableNativeFeedback onPress={() => props.navigation.navigate("Home")} useForeground>
+      <TouchableNativeFeedback
+        onPress={() => props.navigation.navigate("Home")}
+        useForeground
+      >
         <View style={styles.btn}>
-          <Icon name={"ios-home"} size={26} style={styles.labelIcon}/>
+          <Icon name={"ios-home"} size={26} style={styles.labelIcon} />
           <Text style={styles.labelText}>الرئيسية</Text>
         </View>
       </TouchableNativeFeedback>
-      <TouchableNativeFeedback onPress={() => props.navigation.navigate("About")} useForeground>
+      <TouchableNativeFeedback
+        onPress={() => props.navigation.navigate("About")}
+        useForeground
+      >
         <View style={styles.btn}>
-          <Icon name={"ios-information-circle-outline"} size={26} style={styles.labelIcon}/>
+          <Icon
+            name={"ios-information-circle-outline"}
+            size={26}
+            style={styles.labelIcon}
+          />
           <Text style={styles.labelText}>عن التطبيق</Text>
         </View>
       </TouchableNativeFeedback>
-      <TouchableNativeFeedback onPress={() => null} useForeground>
+      <TouchableNativeFeedback onPress={() => shareApp()} useForeground>
         <View style={styles.btn}>
-          <Icon name={"share"} size={26} style={styles.labelIcon}/>
+          <Icon name={"share"} size={26} style={styles.labelIcon} />
           <Text style={styles.labelText}>مشاركة التطبيق</Text>
         </View>
       </TouchableNativeFeedback>
-      <TouchableNativeFeedback onPress={() => null} useForeground>
+      <TouchableNativeFeedback onPress={() => rateApp()} useForeground>
         <View style={styles.btn}>
-          <Icon name={"ios-information-circle-outline"} size={26} style={styles.labelIcon}/>
+          <Icon name={"ios-star"} size={26} style={styles.labelIcon} />
           <Text style={styles.labelText}>تقييم التطبيق</Text>
         </View>
       </TouchableNativeFeedback>
-      <TouchableNativeFeedback onPress={() => null} useForeground>
+      <TouchableNativeFeedback
+        onPress={() => Linking.openURL(`mailto:${EMAIL}`)}
+        useForeground
+      >
         <View style={styles.btn}>
-          <Icon name={"ios-information-circle-outline"} size={26} style={styles.labelIcon}/>
+          <Icon name={"ios-mail"} size={26} style={styles.labelIcon} />
           <Text style={styles.labelText}>تواصل معنا</Text>
         </View>
       </TouchableNativeFeedback>
-      <TouchableNativeFeedback onPress={() => props.navigation.navigate("PrivacyPolicy")} useForeground>
+      <TouchableNativeFeedback
+        onPress={() => props.navigation.navigate("PrivacyPolicy")}
+        useForeground
+      >
         <View style={styles.btn}>
-          <Icon name={"ios-lock"} size={26} style={styles.labelIcon}/>
+          <Icon name={"ios-lock"} size={26} style={styles.labelIcon} />
           <Text style={styles.labelText}>سياسة الخصوصية</Text>
         </View>
       </TouchableNativeFeedback>
-      <TouchableNativeFeedback onPress={() => props.navigation.navigate("TermsOfServices")} useForeground>
+      <TouchableNativeFeedback
+        onPress={() => props.navigation.navigate("TermsOfServices")}
+        useForeground
+      >
         <View style={styles.btn}>
-          <Icon name={"paper"} size={26} style={styles.labelIcon}/>
-          <Text style={styles.labelText}>سياسة الاستخدام</Text>
+          <Icon name={"paper"} size={26} style={styles.labelIcon} />
+          <Text style={styles.labelText}>شروط الاستخدام</Text>
         </View>
       </TouchableNativeFeedback>
     </DrawerContentScrollView>
@@ -131,7 +176,7 @@ const styles = StyleSheet.create({
     paddingVertical: 5,
     flexDirection: "row-reverse",
     borderBottomColor: "#ddd",
-    borderBottomWidth: 1
+    borderBottomWidth: 1,
   },
   labelText: {
     fontFamily: "mix-arab-regular",
@@ -140,6 +185,6 @@ const styles = StyleSheet.create({
   labelIcon: {
     width: 30,
     textAlign: "center",
-    marginLeft: 15
+    marginLeft: 15,
   },
 });
