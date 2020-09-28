@@ -17,11 +17,21 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.techview.numberphone",
+      "config": {
+        "googleMobileAdsAppId": "ca-app-pub-6349400119652128~1587992841"
+      }
     },
     "web": {
       "favicon": "./app/assets/img/favicon.png"
     },
-    "description": ""
+    "description": "",
+    "android": {
+      "package": "com.techview.numberphone",
+      "config": {
+        "googleMobileAdsAppId": "ca-app-pub-6349400119652128~2795959270"
+      }
+    }
   }
 }

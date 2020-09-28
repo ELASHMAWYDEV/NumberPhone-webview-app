@@ -17,8 +17,18 @@ import {
 } from "@react-navigation/drawer";
 import Icon from "react-native-ionicons";
 
+//Admob
+import { AdMobBanner } from "expo-ads-admob";
+
 //Config
 import { EMAIL, GOOGLE_PLAY_URL, APP_STORE_URL } from "../../config";
+import {
+  BANNER_TEST_ID_IOS,
+  BANNER_TEST_ID_ANDROID,
+  BANNER_UNIT_ID_ANDROID,
+  BANNER_UNIT_ID_IOS,
+} from "../../config";
+
 
 //Screens
 import Home from "../screens/Home";
@@ -80,11 +90,24 @@ const CustomDrawer = (props) => {
         <Image source={require("../assets/img/logo.png")} style={styles.logo} />
       </View>
       <Text style={styles.appName}>نمبر فون</Text>
+      <AdMobBanner
+        bannerSize="fullBanner"
+        adUnitID={
+          __DEV__
+            ? Platform.OS === "ios" //in development
+              ? BANNER_TEST_ID_IOS
+              : BANNER_TEST_ID_ANDROID
+            : Platform.OS === "ios" //in production
+            ? BANNER_UNIT_ID_IOS
+            : BANNER_UNIT_ID_ANDROID
+        }
+        servePersonalizedAds
+      />
       <TouchableNativeFeedback
         onPress={() => props.navigation.navigate("Home")}
         useForeground
       >
-        <View style={styles.btn}>
+        <View style={[styles.btn,{marginTop: 15}]}>
           <Icon name={"ios-home"} size={26} style={styles.labelIcon} />
           <Text style={styles.labelText}>الرئيسية</Text>
         </View>

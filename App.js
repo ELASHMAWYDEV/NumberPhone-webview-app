@@ -10,6 +10,12 @@ import AskClose from "./app/Components/AskClose";
 export default function App() {
   useEffect(() => {
     BackHandler.addEventListener("hardwareBackPress", handleBackBtn);
+    
+    
+    return () => {
+      BackHandler.removeEventListener("hardwareBackPress", handleBackBtn);
+
+    }
   }, []);
 
   const handleBackBtn = () => {
