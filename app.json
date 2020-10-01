@@ -19,8 +19,9 @@
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.techview.numberphone",
+      "buildNumber": "1.0",
       "config": {
-        "googleMobileAdsAppId": "ca-app-pub-6349400119652128~1587992841"
+        "googleMobileAdsAppId": "ca-app-pub-4168953325851257~3228624029"
       }
     },
     "web": {
@@ -29,8 +30,9 @@
     "description": "",
     "android": {
       "package": "com.techview.numberphone",
+      "versionCode": 1,
       "config": {
-        "googleMobileAdsAppId": "ca-app-pub-6349400119652128~2795959270"
+        "googleMobileAdsAppId": "ca-app-pub-4168953325851257~1705173223"
       }
     }
   }

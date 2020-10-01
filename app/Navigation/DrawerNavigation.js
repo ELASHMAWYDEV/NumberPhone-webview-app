@@ -29,7 +29,6 @@ import {
   BANNER_UNIT_ID_IOS,
 } from "../../config";
 
-
 //Screens
 import Home from "../screens/Home";
 import About from "../screens/About";
@@ -60,7 +59,6 @@ export default DrawerNavigation = () => {
 };
 
 const CustomDrawer = (props) => {
-
   //Share the app function
   const shareApp = async () => {
     try {
@@ -72,17 +70,15 @@ const CustomDrawer = (props) => {
     }
   };
 
-
   //Rate the app
   const rateApp = () => {
     const url = Platform.OS === "ios" ? APP_STORE_URL : GOOGLE_PLAY_URL;
     if (url) {
-      
       Linking.openURL(url);
     } else {
       return null;
     }
-  }
+  };
 
   return (
     <DrawerContentScrollView style={styles.drawerContainer} {...props}>
@@ -90,24 +86,12 @@ const CustomDrawer = (props) => {
         <Image source={require("../assets/img/logo.png")} style={styles.logo} />
       </View>
       <Text style={styles.appName}>نمبر فون</Text>
-      <AdMobBanner
-        bannerSize="fullBanner"
-        adUnitID={
-          __DEV__
-            ? Platform.OS === "ios" //in development
-              ? BANNER_TEST_ID_IOS
-              : BANNER_TEST_ID_ANDROID
-            : Platform.OS === "ios" //in production
-            ? BANNER_UNIT_ID_IOS
-            : BANNER_UNIT_ID_ANDROID
-        }
-        servePersonalizedAds
-      />
+
       <TouchableNativeFeedback
         onPress={() => props.navigation.navigate("Home")}
         useForeground
       >
-        <View style={[styles.btn,{marginTop: 15}]}>
+        <View style={[styles.btn, { marginTop: 15 }]}>
           <Icon name={"ios-home"} size={26} style={styles.labelIcon} />
           <Text style={styles.labelText}>الرئيسية</Text>
         </View>
@@ -159,11 +143,24 @@ const CustomDrawer = (props) => {
         onPress={() => props.navigation.navigate("TermsOfServices")}
         useForeground
       >
-        <View style={styles.btn}>
+        <View style={[styles.btn, {marginBottom: 20}]}>
           <Icon name={"paper"} size={26} style={styles.labelIcon} />
           <Text style={styles.labelText}>شروط الاستخدام</Text>
         </View>
       </TouchableNativeFeedback>
+        <AdMobBanner
+          bannerSize="largeBanner"
+          adUnitID={
+            __DEV__
+              ? Platform.OS === "ios" //in development
+                ? BANNER_TEST_ID_IOS
+                : BANNER_TEST_ID_ANDROID
+              : Platform.OS === "ios" //in production
+              ? BANNER_UNIT_ID_IOS
+              : BANNER_UNIT_ID_ANDROID
+          }
+          servePersonalizedAds
+        />
     </DrawerContentScrollView>
   );
 };

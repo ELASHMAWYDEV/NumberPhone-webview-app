@@ -40,11 +40,11 @@ export default function App() {
   };
 
   let [fontLoaded] = useFonts({
-    bein: require("./app/assets/fonts/bein.ttf"),
+    "bein": require("./app/assets/fonts/bein.ttf"),
     "mix-arab": require("./app/assets/fonts/mix-arab.ttf"),
     "mix-arab-regular": require("./app/assets/fonts/mix-arab-regular.ttf"),
     "mix-arab-bold": require("./app/assets/fonts/mix-arab-bold.ttf"),
-    Ionicons: require("react-native-ionicons/fonts/Ionicons.ttf"),
+    "Ionicons": require("react-native-ionicons/fonts/Ionicons.ttf"),
   });
 
   return fontLoaded ? (

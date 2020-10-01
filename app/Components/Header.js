@@ -5,7 +5,7 @@ import {
   StyleSheet,
   StatusBar,
   TouchableNativeFeedback,
-  Image
+  Image,
 } from "react-native";
 import Icon from "react-native-ionicons";
 
@@ -16,29 +16,49 @@ export default Header = (props) => {
   return (
     <>
       <View style={styles.container}>
-      <TouchableNativeFeedback
-        useForeground
-        onPress={() => props.navigation.openDrawer()}
-      >
-        <View style={styles.iconContainer}>
-          <Icon
-            size={42}
-            name="ios-menu"
-            style={styles.listIcon}
-            color="#ffffff"
-          />
+        <TouchableNativeFeedback
+          useForeground
+          onPress={() => props.navigation.openDrawer()}
+        >
+          <View style={styles.iconContainer}>
+            <Icon
+              size={42}
+              name="ios-menu"
+              style={styles.listIcon}
+              color="#ffffff"
+            />
+          </View>
+        </TouchableNativeFeedback>
+        <View style={styles.logoContainer}>
+          <View style={styles.logoWrapper}>
+            <Image
+              source={require("../assets/img/logo.png")}
+              style={styles.logo}
+            />
+          </View>
         </View>
-      </TouchableNativeFeedback>
-      <View style={styles.logoContainer}>
-        <View style={styles.logoWrapper}>
-        <Image source={require("../assets/img/logo.png")} style={styles.logo} />
-        </View>
+        <TouchableNativeFeedback
+          useForeground
+          onPress={() => props.reloadWebView()}
+        >
+          <View style={styles.leftContainer}>
+            <Icon
+              name="ios-repeat"
+              size={40}
+              color="#fff"
+              style={styles.repeatIcon}
+            />
+          </View>
+        </TouchableNativeFeedback>
       </View>
-      <View style={styles.leftContainer}></View>
-      </View>
-      </>
+    </>
   );
 };
+
+
+Header.defaultProps = {
+  reloadWebView: () => null,
+}
 
 const styles = StyleSheet.create({
   container: {
@@ -47,8 +67,7 @@ const styles = StyleSheet.create({
     height: 80,
     flexDirection: "row-reverse",
     paddingBottom: 5,
-    zIndex: 2
-    
+    zIndex: 2,
   },
   iconContainer: {
     marginRight: 5,
@@ -57,7 +76,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     borderRadius: 40,
     overflow: "hidden",
-    alignSelf: "center"
+    alignSelf: "center",
   },
   logoContainer: {
     flex: 4,
@@ -65,14 +84,20 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   leftContainer: {
-    flex: 1,
+    width: 60,
+    justifyContent: "center",
+    alignItems: "center",
+    borderRadius: 40,
+    overflow: "hidden",
+    alignSelf: "center",
+    marginLeft: 15
   },
   listIcon: {
     transform: [{ scale: -1 }],
   },
   logoWrapper: {
     backgroundColor: Colors.primary,
-    justifyContent: 'center',
+    justifyContent: "center",
     alignItems: "center",
     width: 105,
     height: 105,
@@ -84,5 +109,5 @@ const styles = StyleSheet.create({
     width: 95,
     height: 95,
   },
-
+  repeatIcon: {},
 });

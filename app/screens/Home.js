@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useRef } from "react";
-import { View, Text, StyleSheet, BackHandler, Platform } from "react-native";
+import { View, StyleSheet, BackHandler, Platform } from "react-native";
 import { WebView } from "react-native-webview";
 
 import { WEBSITE_URL } from "../../config";
 
 //Admob
-import { AdMobBanner, AdMobInterstitial } from "expo-ads-admob";
+import { AdMobInterstitial } from "expo-ads-admob";
 
 //Components
 import Header from "../Components/Header";
@@ -13,23 +13,21 @@ import Loading from "../Components/Loading";
 
 //Config
 import {
-  BANNER_TEST_ID_IOS,
-  BANNER_TEST_ID_ANDROID,
   INTERSTITIAL_TEST_ID_IOS,
   INTERSTITIAL_TEST_ID_ANDROID,
   INTERSTITIAL_UNIT_ID_ANDROID,
   INTERSTITIAL_UNIT_ID_IOS,
-  BANNER_UNIT_ID_ANDROID,
-  BANNER_UNIT_ID_IOS,
 } from "../../config";
 
 export default Home = (props) => {
   const webView = useRef(null);
+  const [isLoading, setIsLoading] = useState(true);
+
 
   useEffect(() => {
     BackHandler.addEventListener("hardwareBackPress", handleBackBtn); //handle back btn press
 
-    setTimeout(displayInterstitial, 10000); //Display interstitial add after 10 sec
+    setTimeout(displayInterstitial, 11000); //Display interstitial add after 11 sec
 
     return () => {
       BackHandler.removeEventListener("hardwareBackPress", handleBackBtn);
@@ -61,30 +59,23 @@ export default Home = (props) => {
     }
   };
 
+
+  const reloadWebView = () => {
+    webView && webView.current.reload();
+  }
+
   return (
     <View style={styles.container}>
-      <Header {...props} />
+      <Header {...props} reloadWebView={() => reloadWebView()}/>
+      {isLoading && <Loading />}
       <WebView
         ref={webView}
         source={{
           uri: WEBSITE_URL,
         }}
         style={styles.webView}
-        renderLoading={() => <Loading />}
+        onLoad={() => setIsLoading(false)}
         allowsBackForwardNavigationGestures
-      />
-      <AdMobBanner
-        bannerSize="fullBanner"
-        adUnitID={
-          __DEV__
-            ? Platform.OS === "ios" //in development
-              ? BANNER_TEST_ID_IOS
-              : BANNER_TEST_ID_ANDROID
-            : Platform.OS === "ios" //in production
-            ? BANNER_UNIT_ID_IOS
-            : BANNER_UNIT_ID_ANDROID
-        }
-        servePersonalizedAds
       />
     </View>
   );

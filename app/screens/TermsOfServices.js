@@ -4,16 +4,6 @@ import { View, Text, StyleSheet, Image, ScrollView } from "react-native";
 //Components
 import PageHeader from "../Components/PageHeader";
 
-//Admob
-import { AdMobBanner } from "expo-ads-admob";
-
-//Config
-import {
-  BANNER_TEST_ID_IOS,
-  BANNER_TEST_ID_ANDROID,
-  BANNER_UNIT_ID_ANDROID,
-  BANNER_UNIT_ID_IOS,
-} from "../../config";
 
 export default TermsOfServices = (props) => {
   return (
@@ -26,19 +16,6 @@ export default TermsOfServices = (props) => {
             style={styles.logo}
           />
         </View>
-        <AdMobBanner
-          bannerSize="smartBannerLandscape"
-          adUnitID={
-            __DEV__
-              ? Platform.OS === "ios" //in development
-                ? BANNER_TEST_ID_IOS
-                : BANNER_TEST_ID_ANDROID
-              : Platform.OS === "ios" //in production
-              ? BANNER_UNIT_ID_IOS
-              : BANNER_UNIT_ID_ANDROID
-          }
-          servePersonalizedAds
-        />
         <Text style={styles.pageTitle}>شروط استخدام تطبيق نمبر فون</Text>
         <Text style={styles.infoText}>
           برنامج مجاني لا يطلب الدفع مقابل التحميل و الاستخدام ، انت كمستخدم

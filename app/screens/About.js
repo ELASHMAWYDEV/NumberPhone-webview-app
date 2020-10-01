@@ -8,16 +8,6 @@ import {
   Linking
 } from "react-native";
 
-//Admob
-import { AdMobBanner } from "expo-ads-admob";
-
-import {
-  BANNER_TEST_ID_IOS,
-  BANNER_TEST_ID_ANDROID,
-  BANNER_UNIT_ID_ANDROID,
-  BANNER_UNIT_ID_IOS,
-} from "../../config";
-
 
 //Config
 import { EMAIL } from "../../config";
@@ -48,19 +38,6 @@ export default About = (props) => {
           <Text style={styles.btnText}>تواصل معنا عبر البريد</Text>
         </View>
       </TouchableNativeFeedback>
-      <AdMobBanner
-        bannerSize="smartBannerPortrait"
-        adUnitID={
-          __DEV__
-            ? Platform.OS === "ios" //in development
-              ? BANNER_TEST_ID_IOS
-              : BANNER_TEST_ID_ANDROID
-            : Platform.OS === "ios" //in production
-            ? BANNER_UNIT_ID_IOS
-            : BANNER_UNIT_ID_ANDROID
-        }
-        servePersonalizedAds
-      />
     </View>
   );
 };
