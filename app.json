@@ -21,7 +21,7 @@
       "bundleIdentifier": "com.techview.numberphone",
       "buildNumber": "1.0",
       "config": {
-        "googleMobileAdsAppId": "ca-app-pub-4168953325851257~3228624029"
+        "googleMobileAdsAppId": "ca-app-pub-4168953325851257~2552857639"
       }
     },
     "web": {
@@ -32,7 +32,7 @@
       "package": "com.techview.numberphone",
       "versionCode": 1,
       "config": {
-        "googleMobileAdsAppId": "ca-app-pub-4168953325851257~1705173223"
+        "googleMobileAdsAppId": "ca-app-pub-4168953325851257~8918955435"
       }
     }
   }

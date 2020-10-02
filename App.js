@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import DrawerNavigation from "./app/Navigation/DrawerNavigation";
 import { useFonts } from "expo-font";
-import { BackHandler, Alert, View } from "react-native";
+import { BackHandler, Alert, View, StatusBar } from "react-native";
 
 //Components
 import Loading from "./app/Components/Loading";
@@ -48,7 +48,8 @@ export default function App() {
   });
 
   return fontLoaded ? (
-    <View style={{flex: 1}}>
+    <View style={{ flex: 1 }}>
+      <StatusBar hidden={true}/>
       <DrawerNavigation />
     </View>
   ) : (

@@ -22,7 +22,7 @@ import {
 export default Home = (props) => {
   const webView = useRef(null);
   const [isLoading, setIsLoading] = useState(true);
-
+  const [url, setUrl] = useState(`${WEBSITE_URL}?t=${Date.now()}`);
 
   useEffect(() => {
     BackHandler.addEventListener("hardwareBackPress", handleBackBtn); //handle back btn press
@@ -61,7 +61,7 @@ export default Home = (props) => {
 
 
   const reloadWebView = () => {
-    webView && webView.current.reload();
+    setUrl(`${WEBSITE_URL}?t=${Date.now()}`);
   }
 
   return (
@@ -71,7 +71,7 @@ export default Home = (props) => {
       <WebView
         ref={webView}
         source={{
-          uri: WEBSITE_URL,
+          uri: url,
         }}
         style={styles.webView}
         onLoad={() => setIsLoading(false)}
@@ -88,7 +88,6 @@ const styles = StyleSheet.create({
   },
   webView: {
     width: "100%",
-    // marginTop: 40,
     backgroundColor: "#fff",
   },
 });

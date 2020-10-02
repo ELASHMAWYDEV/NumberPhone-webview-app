@@ -7,6 +7,7 @@ import {
   TouchableNativeFeedback,
   Image,
 } from "react-native";
+import { getStatusBarHeight } from 'react-native-status-bar-height';
 import Icon from "react-native-ionicons";
 
 //Assets
@@ -52,7 +53,7 @@ export default PageHeader = (props) => {
 
 const styles = StyleSheet.create({
   container: {
-    paddingTop: StatusBar.currentHeight,
+    paddingTop: getStatusBarHeight(),
     backgroundColor: Colors.primary,
     height: 90,
     flexDirection: "row-reverse",

@@ -45,8 +45,8 @@ export default DrawerNavigation = () => {
         initialRouteName="Home"
         drawerPosition="right"
         drawerType="front"
-        statusBarAnimation={true}
-        hideStatusBar={true}
+        statusBarAnimation={false}
+        hideStatusBar={false}
         lazy={true}
       >
         <Drawer.Screen name="Home" component={Home} drawerLabel="الرئيسية" />
@@ -143,24 +143,25 @@ const CustomDrawer = (props) => {
         onPress={() => props.navigation.navigate("TermsOfServices")}
         useForeground
       >
-        <View style={[styles.btn, {marginBottom: 20}]}>
+        <View style={[styles.btn, { marginBottom: 20 }]}>
           <Icon name={"paper"} size={26} style={styles.labelIcon} />
           <Text style={styles.labelText}>شروط الاستخدام</Text>
         </View>
       </TouchableNativeFeedback>
-        <AdMobBanner
-          bannerSize="largeBanner"
-          adUnitID={
-            __DEV__
-              ? Platform.OS === "ios" //in development
-                ? BANNER_TEST_ID_IOS
-                : BANNER_TEST_ID_ANDROID
-              : Platform.OS === "ios" //in production
-              ? BANNER_UNIT_ID_IOS
-              : BANNER_UNIT_ID_ANDROID
-          }
-          servePersonalizedAds
-        />
+      <AdMobBanner
+        bannerSize="largeBanner"
+        adUnitID={
+          __DEV__
+            ? Platform.OS === "ios" //in development
+              ? BANNER_TEST_ID_IOS
+              : BANNER_TEST_ID_ANDROID
+            : Platform.OS === "ios" //in production
+            ? BANNER_UNIT_ID_IOS
+            : BANNER_UNIT_ID_ANDROID
+        }
+        servePersonalizedAds
+        onDidFailToReceiveAdWithError={(e) => console.log(e)}
+      />
     </DrawerContentScrollView>
   );
 };
@@ -170,14 +171,15 @@ const styles = StyleSheet.create({
     paddingTop: StatusBar.currentHeight,
   },
   logoContainer: {
-    width: "100%",
+    width: 200,
     justifyContent: "center",
     alignItems: "center",
+    alignSelf: "center",
   },
   logo: {
     resizeMode: "contain",
-    width: "70%",
-    height: 200,
+    width: "80%",
+    height: 150,
   },
   appName: {
     fontFamily: "mix-arab-bold",

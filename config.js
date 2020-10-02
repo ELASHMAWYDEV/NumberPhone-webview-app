@@ -5,12 +5,12 @@ export const WEBSITE_URL = "http://tech-view.site/tech-view";
 
 
 //Admob Ads for Android
-export const INTERSTITIAL_UNIT_ID_ANDROID = "ca-app-pub-4168953325851257/7808720602";
-export const BANNER_UNIT_ID_ANDROID = "ca-app-pub-4168953325851257/1019950970";
+export const INTERSTITIAL_UNIT_ID_ANDROID = "ca-app-pub-4168953325851257/2153224776";
+export const BANNER_UNIT_ID_ANDROID = "ca-app-pub-4168953325851257/6727906364";
 
 //Admob Ads for IOS
-export const INTERSTITIAL_UNIT_ID_IOS = "ca-app-pub-4168953325851257/3037052337";
-export const BANNER_UNIT_ID_IOS = "ca-app-pub-4168953325851257/6499508365";
+export const INTERSTITIAL_UNIT_ID_IOS = "ca-app-pub-4168953325851257/1284007996";
+export const BANNER_UNIT_ID_IOS = "ca-app-pub-4168953325851257/4740037278";
 
 
 

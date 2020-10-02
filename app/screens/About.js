@@ -5,7 +5,8 @@ import {
   StyleSheet,
   Image,
   TouchableNativeFeedback,
-  Linking
+  Linking,
+  ScrollView
 } from "react-native";
 
 
@@ -23,7 +24,7 @@ import * as pkg from "../../app.json";
 
 export default About = (props) => {
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <PageHeader {...props} title="عن التطبيق" />
       <View style={styles.logoContainer}>
         <Image source={require("../assets/img/logo.png")} style={styles.logo} />
@@ -38,7 +39,7 @@ export default About = (props) => {
           <Text style={styles.btnText}>تواصل معنا عبر البريد</Text>
         </View>
       </TouchableNativeFeedback>
-    </View>
+    </ScrollView>
   );
 };
 

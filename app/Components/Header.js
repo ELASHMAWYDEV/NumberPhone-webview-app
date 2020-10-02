@@ -7,6 +7,8 @@ import {
   TouchableNativeFeedback,
   Image,
 } from "react-native";
+import { getStatusBarHeight } from 'react-native-status-bar-height';
+
 import Icon from "react-native-ionicons";
 
 //Assets
@@ -62,7 +64,7 @@ Header.defaultProps = {
 
 const styles = StyleSheet.create({
   container: {
-    paddingTop: StatusBar.currentHeight,
+    paddingTop: getStatusBarHeight(),
     backgroundColor: Colors.primary,
     height: 80,
     flexDirection: "row-reverse",
@@ -99,15 +101,15 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.primary,
     justifyContent: "center",
     alignItems: "center",
-    width: 105,
-    height: 105,
-    borderRadius: 105 / 2,
-    top: 15,
+    width: 95,
+    height: 95,
+    borderRadius: 95 / 2,
+    top: 20,
   },
   logo: {
     resizeMode: "contain",
-    width: 95,
-    height: 95,
+    width: 85,
+    height: 85,
   },
   repeatIcon: {},
 });
