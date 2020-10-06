@@ -22,7 +22,7 @@ import Colors from "../assets/Colors";
 //Utility
 import * as pkg from "../../app.json";
 
-export default About = (props) => {
+const About = (props) => {
   return (
     <ScrollView style={styles.container}>
       <PageHeader {...props} title="عن التطبيق" />
@@ -98,3 +98,6 @@ const styles = StyleSheet.create({
     color: Colors.primary,
   },
 });
+
+
+export default About;

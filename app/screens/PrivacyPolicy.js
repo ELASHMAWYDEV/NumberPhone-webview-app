@@ -5,7 +5,7 @@ import { View, Text, StyleSheet, Image, ScrollView } from "react-native";
 import PageHeader from "../Components/PageHeader";
 
 
-export default PrivacyPolicy = (props) => {
+const PrivacyPolicy = (props) => {
   return (
     <View style={styles.container}>
       <PageHeader {...props} title="سياسة الخصوصية" />
@@ -82,3 +82,6 @@ const styles = StyleSheet.create({
     marginBottom: 40,
   },
 });
+
+
+export default PrivacyPolicy;

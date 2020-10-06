@@ -19,7 +19,7 @@ import {
   INTERSTITIAL_UNIT_ID_IOS,
 } from "../../config";
 
-export default Home = (props) => {
+const Home = (props) => {
   const webView = useRef(null);
   const [isLoading, setIsLoading] = useState(true);
   const [url, setUrl] = useState(`${WEBSITE_URL}?t=${Date.now()}`);
@@ -67,7 +67,6 @@ export default Home = (props) => {
   return (
     <View style={styles.container}>
       <Header {...props} reloadWebView={() => reloadWebView()}/>
-      {isLoading && <Loading />}
       <WebView
         ref={webView}
         source={{
@@ -91,3 +90,6 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
   },
 });
+
+
+export default Home;

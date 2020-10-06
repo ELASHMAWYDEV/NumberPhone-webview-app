@@ -13,7 +13,7 @@ import Icon from "react-native-ionicons";
 //Assets
 import Colors from "../assets/Colors";
 
-export default PageHeader = (props) => {
+const PageHeader = (props) => {
   return (
     <>
       <View style={styles.container}>
@@ -89,3 +89,6 @@ const styles = StyleSheet.create({
   },
 
 });
+
+
+export default PageHeader;

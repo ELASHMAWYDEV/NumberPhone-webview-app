@@ -5,7 +5,7 @@ import { View, Text, StyleSheet, Image, ScrollView } from "react-native";
 import PageHeader from "../Components/PageHeader";
 
 
-export default TermsOfServices = (props) => {
+const TermsOfServices = (props) => {
   return (
     <View style={styles.container}>
       <PageHeader {...props} title="شروط الاستخدام" />
@@ -71,3 +71,5 @@ const styles = StyleSheet.create({
     marginBottom: 40,
   },
 });
+
+export default TermsOfServices;

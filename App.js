@@ -5,9 +5,8 @@ import { BackHandler, Alert, View, StatusBar } from "react-native";
 
 //Components
 import Loading from "./app/Components/Loading";
-import AskClose from "./app/Components/AskClose";
 
-export default function App() {
+const App = () => {
   useEffect(() => {
     BackHandler.addEventListener("hardwareBackPress", handleBackBtn);
     
@@ -56,3 +55,6 @@ export default function App() {
     <Loading />
   );
 }
+
+
+export default App;

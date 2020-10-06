@@ -37,7 +37,7 @@ import TermsOfServices from "../screens/TermsOfServices";
 
 const Drawer = createDrawerNavigator();
 
-export default DrawerNavigation = () => {
+const DrawerNavigation = () => {
   return (
     <NavigationContainer>
       <Drawer.Navigator
@@ -210,3 +210,6 @@ const styles = StyleSheet.create({
     marginLeft: 15,
   },
 });
+
+
+export default DrawerNavigation;

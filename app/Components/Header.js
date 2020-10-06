@@ -14,7 +14,7 @@ import Icon from "react-native-ionicons";
 //Assets
 import Colors from "../assets/Colors";
 
-export default Header = (props) => {
+const Header = (props) => {
   return (
     <>
       <View style={styles.container}>
@@ -113,3 +113,6 @@ const styles = StyleSheet.create({
   },
   repeatIcon: {},
 });
+
+
+export default Header;

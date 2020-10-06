@@ -6,7 +6,7 @@ import { Modal, ActivityIndicator, View } from "react-native";
 import Colors from "../assets/Colors";
 
 
-export default Loading = () => {
+const Loading = () => {
   const [visible, setVisible] = useState(true);
 
   return (
@@ -29,3 +29,6 @@ export default Loading = () => {
     </Modal>
   );
 };
+
+
+export default Loading;
