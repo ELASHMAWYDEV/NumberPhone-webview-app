@@ -1,5 +1,5 @@
 export const EMAIL = "n.phone.tech@gmail.com";
-export const GOOGLE_PLAY_URL = "";
+export const GOOGLE_PLAY_URL = "https://play.google.com/store/apps/details?id=com.techview.numberphone";
 export const APP_STORE_URL = "";
 export const WEBSITE_URL = "http://tech-view.site/tech-view";
 

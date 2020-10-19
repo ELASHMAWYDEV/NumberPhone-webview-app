@@ -2,7 +2,7 @@
   "expo": {
     "name": "نمبر فون",
     "slug": "number-phone",
-    "version": "1.0.0",
+    "version": "1.1",
     "orientation": "portrait",
     "icon": "./app/assets/img/icon.png",
     "splash": {
@@ -30,7 +30,7 @@
     "description": "",
     "android": {
       "package": "com.techview.numberphone",
-      "versionCode": 2,
+      "versionCode": 3,
       "config": {
         "googleMobileAdsAppId": "ca-app-pub-4168953325851257~8918955435"
       }

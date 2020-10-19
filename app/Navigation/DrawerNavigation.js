@@ -31,6 +31,7 @@ import {
 
 //Screens
 import Home from "../screens/Home";
+import DateConverter from "../screens/DateConverter";
 import About from "../screens/About";
 import PrivacyPolicy from "../screens/PrivacyPolicy";
 import TermsOfServices from "../screens/TermsOfServices";
@@ -50,6 +51,7 @@ const DrawerNavigation = () => {
         lazy={true}
       >
         <Drawer.Screen name="Home" component={Home} drawerLabel="الرئيسية" />
+        <Drawer.Screen name="DateConverter" component={DateConverter} drawerLabel="محول التاريخ" />
         <Drawer.Screen name="About" component={About} />
         <Drawer.Screen name="PrivacyPolicy" component={PrivacyPolicy} />
         <Drawer.Screen name="TermsOfServices" component={TermsOfServices} />
@@ -94,6 +96,15 @@ const CustomDrawer = (props) => {
         <View style={[styles.btn, { marginTop: 15 }]}>
           <Icon name={"ios-home"} size={26} style={styles.labelIcon} />
           <Text style={styles.labelText}>الرئيسية</Text>
+        </View>
+      </TouchableNativeFeedback>
+      <TouchableNativeFeedback
+        onPress={() => props.navigation.navigate("DateConverter")}
+        useForeground
+      >
+        <View style={styles.btn}>
+          <Icon name={"calendar"} size={26} style={styles.labelIcon} />
+          <Text style={styles.labelText}>محول التاريخ</Text>
         </View>
       </TouchableNativeFeedback>
       <TouchableNativeFeedback
@@ -143,13 +154,13 @@ const CustomDrawer = (props) => {
         onPress={() => props.navigation.navigate("TermsOfServices")}
         useForeground
       >
-        <View style={[styles.btn, { marginBottom: 20 }]}>
+        <View style={[styles.btn, { marginBottom: 30 }]}>
           <Icon name={"paper"} size={26} style={styles.labelIcon} />
           <Text style={styles.labelText}>شروط الاستخدام</Text>
         </View>
       </TouchableNativeFeedback>
       <AdMobBanner
-        bannerSize="largeBanner"
+        bannerSize="banner"
         adUnitID={
           __DEV__
             ? Platform.OS === "ios" //in development

@@ -1,0 +1,95 @@
+import React, { useState, useEffect, useRef } from "react";
+import { View, StyleSheet, BackHandler, Platform } from "react-native";
+import { WebView } from "react-native-webview";
+
+//Admob
+import { AdMobInterstitial } from "expo-ads-admob";
+
+//Components
+import Header from "../Components/Header";
+import Loading from "../Components/Loading";
+
+//Config
+import {
+  INTERSTITIAL_TEST_ID_IOS,
+  INTERSTITIAL_TEST_ID_ANDROID,
+  INTERSTITIAL_UNIT_ID_ANDROID,
+  INTERSTITIAL_UNIT_ID_IOS,
+} from "../../config";
+
+const WEBSITE_URL = "https://date.tech-view.site";
+
+const DateConverter = (props) => {
+  const webView = useRef(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [url, setUrl] = useState(`${WEBSITE_URL}?t=${Date.now()}`);
+
+  useEffect(() => {
+    BackHandler.addEventListener("hardwareBackPress", handleBackBtn); //handle back btn press
+
+    setTimeout(displayInterstitial, 11000); //Display interstitial add after 11 sec
+
+    return () => {
+      BackHandler.removeEventListener("hardwareBackPress", handleBackBtn);
+    };
+  }, []);
+
+  const displayInterstitial = async () => {
+    try {
+      await AdMobInterstitial.setAdUnitID(
+        __DEV__
+          ? Platform.OS === "ios" //in development
+            ? INTERSTITIAL_TEST_ID_IOS
+            : INTERSTITIAL_TEST_ID_ANDROID
+          : Platform.OS === "ios" //in production
+          ? INTERSTITIAL_UNIT_ID_IOS
+          : INTERSTITIAL_UNIT_ID_ANDROID
+      );
+      await AdMobInterstitial.requestAdAsync({ servePersonalizedAds: true });
+      await AdMobInterstitial.showAdAsync();
+    } catch (e) {
+      console.log(e.message);
+    }
+  };
+
+  const handleBackBtn = () => {
+    if (webView.current.canGoBack) {
+      webView.current.goBack();
+      return true;
+    }
+  };
+
+
+  const reloadWebView = () => {
+    setUrl(`${WEBSITE_URL}?t=${Date.now()}`);
+  }
+
+  return (
+    <View style={styles.container}>
+      <Header {...props} reloadWebView={() => reloadWebView()}/>
+      <WebView
+        ref={webView}
+        source={{
+          uri: url,
+        }}
+        style={styles.webView}
+        onLoad={() => setIsLoading(false)}
+        allowsBackForwardNavigationGestures
+      />
+    </View>
+  );
+};
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#fff",
+  },
+  webView: {
+    width: "100%",
+    backgroundColor: "#fff",
+  },
+});
+
+
+export default DateConverter;
