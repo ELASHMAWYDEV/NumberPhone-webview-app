@@ -49,9 +49,16 @@ const DrawerNavigation = () => {
         statusBarAnimation={false}
         hideStatusBar={false}
         lazy={true}
+        drawerStyle={{
+          width: 320,
+        }}
       >
         <Drawer.Screen name="Home" component={Home} drawerLabel="الرئيسية" />
-        <Drawer.Screen name="DateConverter" component={DateConverter} drawerLabel="محول التاريخ" />
+        <Drawer.Screen
+          name="DateConverter"
+          component={DateConverter}
+          drawerLabel="محول التاريخ"
+        />
         <Drawer.Screen name="About" component={About} />
         <Drawer.Screen name="PrivacyPolicy" component={PrivacyPolicy} />
         <Drawer.Screen name="TermsOfServices" component={TermsOfServices} />
@@ -154,7 +161,7 @@ const CustomDrawer = (props) => {
         onPress={() => props.navigation.navigate("TermsOfServices")}
         useForeground
       >
-        <View style={[styles.btn, { marginBottom: 30 }]}>
+        <View style={[styles.btn]}>
           <Icon name={"paper"} size={26} style={styles.labelIcon} />
           <Text style={styles.labelText}>شروط الاستخدام</Text>
         </View>
@@ -221,6 +228,5 @@ const styles = StyleSheet.create({
     marginLeft: 15,
   },
 });
-
 
 export default DrawerNavigation;

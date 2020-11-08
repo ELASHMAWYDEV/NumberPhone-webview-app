@@ -8,6 +8,7 @@ import { AdMobInterstitial } from "expo-ads-admob";
 //Components
 import Header from "../Components/Header";
 import Loading from "../Components/Loading";
+import NoConnection from "../Components/NoConnection";
 
 //Config
 import {
@@ -59,14 +60,14 @@ const DateConverter = (props) => {
     }
   };
 
-
   const reloadWebView = () => {
     setUrl(`${WEBSITE_URL}?t=${Date.now()}`);
-  }
+  };
 
   return (
     <View style={styles.container}>
-      <Header {...props} reloadWebView={() => reloadWebView()}/>
+      <NoConnection />
+      <Header {...props} reloadWebView={() => reloadWebView()} />
       <WebView
         ref={webView}
         source={{
@@ -90,6 +91,5 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
   },
 });
-
 
 export default DateConverter;

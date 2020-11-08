@@ -6,9 +6,8 @@ import {
   Image,
   TouchableNativeFeedback,
   Linking,
-  ScrollView
+  ScrollView,
 } from "react-native";
-
 
 //Config
 import { EMAIL } from "../../config";
@@ -34,11 +33,15 @@ const About = (props) => {
       <Text style={styles.infoText}>
         أكبر دليل للبحث عن الأرقام وإظهار النتائج بكل دقة
       </Text>
-      <TouchableNativeFeedback onPress={() => Linking.openURL(`mailto:${EMAIL}`)} background={TouchableNativeFeedback.Ripple(Colors.primary, false)}>
+      <TouchableNativeFeedback
+        onPress={() => Linking.openURL(`mailto:${EMAIL}`)}
+        background={TouchableNativeFeedback.Ripple(Colors.primary, false)}
+      >
         <View style={styles.sendMailBtn}>
           <Text style={styles.btnText}>تواصل معنا عبر البريد</Text>
         </View>
       </TouchableNativeFeedback>
+     
     </ScrollView>
   );
 };
@@ -90,7 +93,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     width: 330,
     marginVertical: 30,
-    alignSelf: 'center',
+    alignSelf: "center",
   },
   btnText: {
     fontFamily: "mix-arab-regular",
@@ -98,6 +101,5 @@ const styles = StyleSheet.create({
     color: Colors.primary,
   },
 });
-
 
 export default About;
