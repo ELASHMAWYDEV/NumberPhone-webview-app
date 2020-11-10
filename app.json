@@ -1,0 +1,40 @@
+{
+  "expo": {
+    "name": "نمبر فون",
+    "slug": "number-phone",
+    "version": "1.0",
+    "orientation": "portrait",
+    "icon": "./app/assets/img/icon.png",
+    "splash": {
+      "image": "./app/assets/img/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.techview.number.phone",
+      "buildNumber": "1.0",
+      "config": {
+        "googleMobileAdsAppId": "ca-app-pub-4168953325851257~2552857639"
+      }
+    },
+    "web": {
+      "favicon": "./app/assets/img/favicon.png"
+    },
+    "description": "",
+    "android": {
+      "package": "com.techview.number.phone",
+      "versionCode": 1,
+      "permissions": [],
+      "config": {
+        "googleMobileAdsAppId": "ca-app-pub-4168953325851257~8918955435"
+      }
+    }
+  }
+}
